@@ -46,6 +46,10 @@ const Section1: React.FC<MyComponentProps> = ({ className }) => {
 	let maximunScroll = 500;
 	let currentScroll = 0;
 
+	useEffect(() => {
+		if (index === 0 && location.pathname === '/section-one') goNext();
+	}, [])
+
 	const goNext = () => {
 		if (index === 0) {
 			gsap.to(titleRef.current, { y: '0vh', duration: 1 });
@@ -105,8 +109,6 @@ const Section1: React.FC<MyComponentProps> = ({ className }) => {
 			currentScroll = 0;
 			goBefore();
 		}
-
-		console.log(currentScroll, '============')
 	}
 
 	return (
