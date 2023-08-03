@@ -212,9 +212,14 @@ const Section2: React.FC<MyComponentProps> = ({ className }) => {
         }
     }
 
+    const handleKeydown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.keyCode === 38) goBefore();
+        if (event.keyCode === 40) goNext();
+    }
+
     return (
         <div>
-            <div className={className} onWheel={handleWheel} ref={wholeRef}>
+            <div className={className} onWheel={handleWheel} onKeyDown={handleKeydown} ref={wholeRef} tabIndex={0}>
                 <div>
                     <div className="fixed w-screen h-screen">
                         <img src={centerImg} className="absolute w-full h-full" />
